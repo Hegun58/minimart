@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-  Daftar Produk
+  Daftar Member
 @endsection
 
 @section('breadcrumb')
   @parent
-  <li>produk</li>
+  <li>member</li>
 @endsection
 
 @section('content')
@@ -15,27 +15,22 @@
       <div class="box">
         <div class="box-header">
           <a onclick="addForm()" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Tambah</a>
-          <a onclick="deleteAll()" class="btn btn-danger"> <i class="fa fa-plus-trash"></i> Hapus</a>
-          <a onclick="printBarcode()" class="btn btn-info"> <i class="fa fa-plus-barcode"></i> Cetak Barcode</a>
+          <a onclick="printCard()" class="btn btn-info"> <i class="fa fa-credit-card"></i> Cetak Kartu</a>
         </div>
 
         <div class="box-body">
 
-          <form method="post" id="form-produk">
+          <form method="post" id="form-member">
             {{ csrf_field() }}
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th width="20"><input type="checkbox" value="1" id="select-all"></th>
                   <th width="20">No</th>
-                  <th>Kode Produk</th>
-                  <th>Nama Produk</th>
-                  <th>Kategori</th>
-                  <th>Merk</th>
-                  <th>Harga Beli</th>
-                  <th>Harga Jual</th>
-                  <th>Diskon</th>
-                  <th>Stok</th>
+                  <th>Kode Member</th>
+                  <th>Nama Member</th>
+                  <th>Alamat</th>
+                  <th>Telpon</th>
                   <th width="100">Aksi</th>
                 </tr>
               </thead>
@@ -48,7 +43,7 @@
       </div>
     </div>
   </div>
-@include('produk.form')
+@include('member.form')
 @endsection
 
 @section('script')
@@ -58,9 +53,8 @@
     //Menampilkan data dengan plugin DataTable
     table = $('.table').DataTable({
       "processing" : true,
-      "serverside" : true,
       "ajax" : {
-        "url" : "{{ route('produk.data') }}",
+        "url" : "{{ route('member.data') }}",
         "type" : "GET"
       },
       'columnDefs' : [{
@@ -80,8 +74,8 @@
     $('#modal-form form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
         var id = $('#id').val();
-        if(save_method == "add") url = "{{ route('produk.store') }}";
-        else url = "produk/"+id;
+        if(save_method == "add") url = "{{ route('member.store') }}";
+        else url = "member/"+id;
 
         $.ajax({
           url : url,
@@ -90,9 +84,9 @@
           dataType : 'JSON',
           success : function(data){
             if(data.msg=="error"){
-              alert('Kode produk sudah digunakan!');
+              alert('Kode member sudah digunakan!');
               $('#kode').focus().select();
-            }else {
+            }else{
               $('#modal-form').modal('hide');
               table.ajax.reload();
             }
@@ -112,7 +106,7 @@ function addForm(){
 	$('input[name=_method]').val('POST');
 	$('#modal-form').modal('show');
 	$('#modal-form form')[0].reset();
-	$('.modal-title').text('Tambah Produk');
+	$('.modal-title').text('Tambah Member');
   $('#kode').attr('readonly', false);
 }
 
@@ -122,21 +116,18 @@ function editForm(id){
 	$('input[name=_method').val('PATCH');
 	$('#modal-form form')[0].reset();
 	$.ajax({
-		url : "produk/"+id+"/edit",
+		url : "member/"+id+"/edit",
 		type : "GET",
 		dataType : "JSON",
 		success : function(data){
 			$('#modal-form').modal('show');
-      $('#modal-title').text('Edit Produk');
+      $('#modal-title').text('Edit Member');
 
-			$('#id').val(data.id_produk);
-      $('#kode').val(data.kode_produk).attr('readonly', true);
-			$('#nama').val(data.nama_produk);
-      $('#merk').val(data.merk);
-			$('#harga_beli').val(data.harga_beli);
-      $('#Diskon').val(data.diskon);
-      $('#harga_jual').val(data.harga_jual);
-      $('#stok').val(data.stok);
+			$('#id').val(data.id_member);
+      $('#kode').val(data.kode_member).attr('readonly', true);
+			$('#nama').val(data.nama);
+      $('#alamat').val(data.alamat);
+      $('#telpon').val(data.telpon);
 		},
 		error : function(){
 			alert("Tidak dapat menampilkan data!");
@@ -148,7 +139,7 @@ function editForm(id){
 function deleteData(id){
 	if(confirm("Apakah yakin data akan dihapus?")){
 		$.ajax({
-			url : "produk/"+id,
+			url : "member/"+id,
 			type : "POST",
       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
 			success : function(data){
@@ -161,31 +152,12 @@ function deleteData(id){
 	}
 }
 
-//Menghapus semua data yang dicentang
-function deleteAll(){
-  if($('input:checked').length < 1){
-    alert('Pilih data yang akan dihapus!');
-  }else if(confirm("Apakah yakin akan menghapus semua data terpilih?")){
-    $.ajax({
-      url : "produk/hapus",
-      type : "POST",
-      data : $('#form-produk').serialize(),
-      success : function (data){
-        table.ajax.reload();
-      },
-      error : function(){
-        alert("Tidak dapat menghapus data!");
-      }
-    });
-  }
-}
-
-//Mencetak barcode ketika tombol Cetak Barcode diklik
-function printBarcode(){
+//Mencetak kartu ketika tombol Cetak kartu diklik
+function printCard(){
   if($('input:checked').length < 1){
     alert('Pilih data yang akan dicetak!');
   }else{
-    $('#form-produk').attr('target', '_blank').attr('action', "produk/cetak").submit();
+    $('#form-member').attr('target', '_blank').attr('action', "member/cetak").submit();
   }
 }
 </script>

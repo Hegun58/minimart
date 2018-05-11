@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Kategori;
+use App\Supplier;
 
-class KategoriController extends Controller
+class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,22 +15,23 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        return view('kategori.index');
+        return view('supplier.index');
     }
 
     public function listData(){
-      $kategori = Kategori::orderBy('id_kategori', 'desc')->get();
+      $supplier = Supplier::orderBy('id_supplier', 'desc')->get();
       $no = 0;
       $data = array();
-      foreach($kategori as $list){
+      foreach($supplier as $list){
         $no ++;
-        $row = array();
         $row[] = $no;
-        $row[] = $list->nama_kategori;
+        $row[] = $list->nama;
+        $row[] = $list->alamat;
+        $row[] = $list->telpon;
         $row[] = '<div class="btn-group">
-          <a onclick="editForm('.$list->id_kategori.')" class="btn btn-primary btn-sm">
+          <a onclick="editForm('.$list->id_supplier.')" class="btn btn-primary btn-sm">
             <i class="fa fa-pencil-alt"></i></a>
-            <a onclick="deleteData('.$list->id_kategori.')" class="btn btn-danger btn-sm">
+            <a onclick="deleteData('.$list->id_supplier.')" class="btn btn-danger btn-sm">
             <i class="fa fa-trash"></i></a>
         </div>';
         $data[] = $row;
@@ -58,9 +59,11 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori = new Kategori;
-        $kategori->nama_kategori = $request['nama'];
-        $kategori->save();
+        $supplier = new Supplier;
+        $supplier->nama = $request['nama'];
+        $supplier->alamat = $request['alamat'];
+        $supplier->telpon = $request['telpon'];
+        $supplier->save();
     }
 
     /**
@@ -82,8 +85,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::find($id);
-        echo json_encode($kategori);
+        $supplier = Supplier::find($id);
+        echo json_encode($supplier);
     }
 
     /**
@@ -95,9 +98,11 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->nama_kategori = $request['nama'];
-        $kategori->update();
+        $supplier = Supplier::find($id);
+        $supplier->nama = $request['nama'];
+        $supplier->alamat = $request['alamat'];
+        $supplier->telpon = $request['telpon'];
+        $supplier->update();
     }
 
     /**
@@ -108,7 +113,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->delete();
+        $supplier = Supplier::find($id);
+        $supplier->delete();
     }
 }

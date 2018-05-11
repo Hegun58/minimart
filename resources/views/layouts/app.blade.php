@@ -12,7 +12,7 @@
     <!-- Styles -->
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('public/adminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/adminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/adminLTE/dist/css/skins/skin-blue.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/adminLTE/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
@@ -102,7 +102,7 @@
           <li><a href="{{ route('produk.index') }}"><i class="fa fa-cubes"></i> <span>Kategori</span></a></li>
           <li><a href="{{ route('member.index') }}"><i class="fa fa-credit-card"></i> <span>Member</span></a></li>
           <li><a href="{{ route('supplier.index') }}"><i class="fa fa-truck"></i> <span>Supplier</span></a></li>
-          <li><a href="{{ route('pengeluaran.index') }}"><i class="fa fa-money"></i> <span>Pengeluara</span></a></li>
+          <li><a href="{{ route('pengeluaran.index') }}"><i class="fa fa-money"></i> <span>Pengeluaran</span></a></li>
           <li><a href="{{ route('user.index') }}"><i class="fa fa-upload"></i> <span>User</span></a></li>
           <li><a href="{{ route('penjualan.index') }}"><i class="fa fa-user"></i> <span>Penjualan</span></a></li>
           <li><a href="{{ route('pembelian.index') }}"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
@@ -110,15 +110,15 @@
           <li><a href="{{ route('setting.index') }}"><i class="fa fa-gears"></i> <span>Setting</span></a></li> --}}
 
           <li><a href="{{ route('kategori.index') }}"><i class="fa fa-cube"></i> <span>Kategori</span></a></li>
-          <li><a href="#"><i class="fa fa-cubes"></i> <span>Produk</span></a></li>
-          <li><a href="#"><i class="fa fa-credit-card"></i> <span>Member</span></a></li>
-          <li><a href="#"><i class="fa fa-truck"></i> <span>Supplier</span></a></li>
-          <li><a href="#"><i class="fa fa-money"></i> <span>Pengeluara</span></a></li>
-          <li><a href="#"><i class="fa fa-upload"></i> <span>User</span></a></li>
-          <li><a href="#"><i class="fa fa-user"></i> <span>Penjualan</span></a></li>
+          <li><a href="{{ route('produk.index') }}"><i class="fa fa-cubes"></i> <span>Produk</span></a></li>
+          <li><a href="{{ route('member.index') }}"><i class="fa fa-credit-card"></i> <span>Member</span></a></li>
+          <li><a href="{{ route('supplier.index') }}"><i class="fa fa-truck"></i> <span>Supplier</span></a></li>
+          <li><a href="#"><i class="fa fa-money-bill-alt"></i> <span>Pengeluaran</span></a></li>
+          <li><a href="#"><i class="fa fa-user"></i> <span>User</span></a></li>
+          <li><a href="#"><i class="fa fa-upload"></i> <span>Penjualan</span></a></li>
           <li><a href="#"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
-          <li><a href="#"><i class="fa fa-file-pdf-o"></i> <span>Laporan</span></a></li>
-          <li><a href="#"><i class="fa fa-gears"></i> <span>Setting</span></a></li>
+          <li><a href="#"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
+          <li><a href="#"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
 
           @else
 
@@ -174,10 +174,10 @@
     <script src="{{ asset('public/adminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/dist/js/app.min.js') }}"></script>
-    <script src="{{ asset('public/adminLTE/plugins/chartjs/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('public/adminLTE/plugins/chartjs/Chart.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('public/adminLTE/plugins/datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('public/adminLTE/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('public/js/validator.min.js') }}"></script>
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 

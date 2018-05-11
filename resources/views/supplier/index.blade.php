@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-  Daftar Kategori
+  Daftar Supplier
 @endsection
 
 @section('breadcrumb')
   @parent
-  <li>kategori</li>
+  <li>supplier</li>
 @endsection
 
 @section('content')
@@ -17,20 +17,31 @@
           <a onclick="addForm()" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Tambah</a>
         </div>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th width="30">No</th>
-              <th>Nama Kategori</th>
-              <th width="100">Aksi</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="box-body">
+
+          <form action="index.html" method="post">
+            {{ csrf_field() }}
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="20"><input type="checkbox" value="1" id="select-all"></th>
+                  <th width="20">No</th>
+                  <th>Nama Supplier</th>
+                  <th>Alamat</th>
+                  <th>Telpon</th>
+                  <th width="100">Aksi</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </form>
+
+        </div>
+
       </div>
     </div>
   </div>
-@include('kategori.form')
+@include('supplier.form')
 @endsection
 
 @section('script')
@@ -41,23 +52,23 @@
     table = $('.table').DataTable({
       "processing" : true,
       "ajax" : {
-        "url" : "{{ route('kategori.data') }}",
+        "url" : "{{ route('supplier.data') }}",
         "type" : "GET"
       }
     });
 
-  //Menyimpan data form tambah/edit beserta validasinya
-  $('modal-form form').validator().on('submit', function(e){
-    if (!e.isDefaultPrevented()) {
-      var id = $('#id').val();
-      if(save_method == "add") url = "{{
-        route('kategori.store') }}";
-        else url = "kategori/"+id;
+    //Menyimpan data dari form tambah/edit
+    $('#modal-form form').validator().on('submit', function(e){
+      if(!e.isDefaultPrevented()){
+        var id = $('#id').val();
+        if(save_method == "add") url = "{{ route('supplier.store') }}";
+        else url = "supplier/"+id;
 
         $.ajax({
           url : url,
           type : "POST",
           data : $('#modal-form form').serialize(),
+          dataType : 'JSON',
           success : function(data){
             $('#modal-form').modal('hide');
             table.ajax.reload();
@@ -67,9 +78,9 @@
           }
         });
         return false;
-    }
+      }
+    });
   });
-});
 
 //Menampilkan form tambah
 function addForm(){
@@ -77,7 +88,7 @@ function addForm(){
 	$('input[name=_method]').val('POST');
 	$('#modal-form').modal('show');
 	$('#modal-form form')[0].reset();
-	$('.modal-title').text('Tambah Kategori');
+	$('.modal-title').text('Tambah Supplier');
 }
 
 //Menampilkan form edit dan menampilkan data pada form tersebut
@@ -86,15 +97,17 @@ function editForm(id){
 	$('input[name=_method').val('PATCH');
 	$('#modal-form form')[0].reset();
 	$.ajax({
-		url : "kategori/"+id+"/edit",
+		url : "supplier/"+id+"/edit",
 		type : "GET",
 		dataType : "JSON",
 		success : function(data){
 			$('#modal-form').modal('show');
-			$('.pmd-card-title-text').text('Edit Kategori');
+      $('#modal-title').text('Edit Supplier');
 
-			$('#id').val(data.id_kategori);
-			$('#nama').val(data.nama_kategori);
+			$('#id').val(data.id_supplier);
+      $('#nama').val(data.nama);
+			$('#alamat').val(data.alamat);
+      $('#telpon').val(data.telpon);
 		},
 		error : function(){
 			alert("Tidak dapat menampilkan data!");
@@ -102,10 +115,11 @@ function editForm(id){
 	});
 }
 
+//Menghapus data
 function deleteData(id){
 	if(confirm("Apakah yakin data akan dihapus?")){
 		$.ajax({
-			url : "kategori/"+id,
+			url : "supplier/"+id,
 			type : "POST",
       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
 			success : function(data){
@@ -117,5 +131,6 @@ function deleteData(id){
 		});
 	}
 }
+
 </script>
 @endsection

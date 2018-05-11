@@ -28,4 +28,11 @@ function(){
   Route::post('produk/hapus', 'ProdukController@deleteSelected');
   Route::post('produk/cetak', 'ProdukController@printBarcode');
   Route::resource('produk', 'ProdukController');
+
+  Route::get('supplier/data', 'SupplierController@listData')->name('supplier.data');
+  Route::resource('supplier', 'SupplierController');
+
+  Route::get('member/data', 'MemberController@listData')->name('member.data');
+  Route::resource('member/cetak', 'MemberController@printCard');
+  Route::resource('member', 'MemberController');
 });
