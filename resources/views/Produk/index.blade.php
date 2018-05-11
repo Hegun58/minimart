@@ -161,6 +161,7 @@ function editForm(id){
 	});
 }
 
+//Menghapus data
 function deleteData(id){
 	if(confirm("Apakah yakin data akan dihapus?")){
 		$.ajax({
@@ -176,5 +177,33 @@ function deleteData(id){
 		});
 	}
 }
+
+//Menghapus semua data yang dicentang
+function deleteAll(){
+  if($('input:checked').length < 1){
+    alert('Pilih data yang akan dihapus!');
+  }else if(confirm("Apakah yakin akan menghapus semua data terpilih?")){
+    $.ajax({
+      url : "produk/hapus",
+      type : "POST",
+      data : {' _method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
+      success : function (data){
+        table.ajax.reload();
+      },
+      error : function(){
+        alert("Tidak dapat menghapus data!");
+      }
+    });
+  }
+}
+
+//Mencetak barcode ketika tombol Cetak Barcode diklik
+function printBarcode({
+  if($('input.:checked').length < 1){
+    alert('Pilih data yang akan dicetak!');
+  }else{
+    $('#form-produk').attr('target', '_blank').attr('action', "produk/cetak").submit();
+  }
+});
 </script>
 @endsection
