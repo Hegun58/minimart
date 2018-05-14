@@ -15,13 +15,13 @@
       <div class="box">
         <div class="box-header">
           <a onclick="addForm()" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Tambah</a>
-          <a onclick="deleteAll()" class="btn btn-danger"> <i class="fa fa-plus-trash"></i> Hapus</a>
-          <a onclick="printBarcode()" class="btn btn-info"> <i class="fa fa-plus-barcode"></i> Cetak Barcode</a>
+          <a onclick="deleteAll()" class="btn btn-danger"> <i class="fa fa-trash"></i> Hapus</a>
+          <a onclick="printBarcode()" class="btn btn-info"> <i class="fa fa-barcode"></i> Cetak Barcode</a>
         </div>
 
         <div class="box-body">
 
-          <form method="post" id="form-produk">
+          <form action="index.html" method="post">
             {{ csrf_field() }}
             <table class="table table-striped">
               <thead>
@@ -76,7 +76,7 @@
       $('input[type="checkbox"]').prop('checked', this.checked);
     });
 
-    //Menyimpan data dari form tambah/edit
+    //Menyimpan data dari form tambah/edit beserta validasinya
     $('#modal-form form').validator().on('submit', function(e){
       if(!e.isDefaultPrevented()){
         var id = $('#id').val();
@@ -112,8 +112,7 @@ function addForm(){
 	$('input[name=_method]').val('POST');
 	$('#modal-form').modal('show');
 	$('#modal-form form')[0].reset();
-	$('.modal-title').text('Tambah Produk');
-  $('#kode').attr('readonly', false);
+	$('.modal-title').text('Tambah Kategori');
 }
 
 //Menampilkan form edit dan menampilkan data pada form tersebut
@@ -122,21 +121,15 @@ function editForm(id){
 	$('input[name=_method').val('PATCH');
 	$('#modal-form form')[0].reset();
 	$.ajax({
-		url : "produk/"+id+"/edit",
+		url : "kategori/"+id+"/edit",
 		type : "GET",
 		dataType : "JSON",
 		success : function(data){
 			$('#modal-form').modal('show');
-      $('#modal-title').text('Edit Produk');
+			$('.pmd-card-title-text').text('Edit Kategori');
 
-			$('#id').val(data.id_produk);
-      $('#kode').val(data.kode_produk).attr('readonly', true);
-			$('#nama').val(data.nama_produk);
-      $('#merk').val(data.merk);
-			$('#harga_beli').val(data.harga_beli);
-      $('#Diskon').val(data.diskon);
-      $('#harga_jual').val(data.harga_jual);
-      $('#stok').val(data.stok);
+			$('#id').val(data.id_kategori);
+			$('#nama').val(data.nama_kategori);
 		},
 		error : function(){
 			alert("Tidak dapat menampilkan data!");
@@ -148,7 +141,7 @@ function editForm(id){
 function deleteData(id){
 	if(confirm("Apakah yakin data akan dihapus?")){
 		$.ajax({
-			url : "produk/"+id,
+			url : "kategori/"+id,
 			type : "POST",
       data : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
 			success : function(data){
@@ -169,7 +162,7 @@ function deleteAll(){
     $.ajax({
       url : "produk/hapus",
       type : "POST",
-      data : $('#form-produk').serialize(),
+      data : {' _method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
       success : function (data){
         table.ajax.reload();
       },
@@ -181,12 +174,12 @@ function deleteAll(){
 }
 
 //Mencetak barcode ketika tombol Cetak Barcode diklik
-function printBarcode(){
-  if($('input:checked').length < 1){
+function printBarcode({
+  if($('input.:checked').length < 1){
     alert('Pilih data yang akan dicetak!');
   }else{
     $('#form-produk').attr('target', '_blank').attr('action', "produk/cetak").submit();
   }
-}
+});
 </script>
 @endsection

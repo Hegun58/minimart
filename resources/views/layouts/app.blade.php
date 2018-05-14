@@ -54,7 +54,6 @@
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img src="{{ asset('public/images/'.Auth::user()->foto) }}" class="img-circle" alt="User Image">
-
                     <p>
                       {{ Auth::user()->name }}
                     </p>

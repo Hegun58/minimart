@@ -35,4 +35,7 @@ function(){
   Route::get('member/data', 'MemberController@listData')->name('member.data');
   Route::resource('member/cetak', 'MemberController@printCard');
   Route::resource('member', 'MemberController');
+
+  Route::get('pengeluaran/data', 'PengeluaranController@listData')->name('pengeluaran.data');
+  Route::resource('pengeluaran', 'PengeluaranController');
 });
