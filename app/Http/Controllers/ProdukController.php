@@ -41,10 +41,10 @@ class ProdukController extends Controller
             $row[] = "Rp. ".format_uang($list->harga_jual);
             $row[] = $list->diskon."%";
             $row[] = $list->stok;
-            $row[] = "<div class='btn-group'><a onclick='editForm(".$list->id_produk.")'
-            class='btn btn-primary btn-sm'><i class='fa fa-pencil-alt'></i></a>
-            <a onclick='deleteData(".$list->id_produk.")' class='btn btn-danger'><i class='fa fa-trash'></i>
-            </a></div>";
+            $row[] = '<div class="btn-group"><a onclick="editForm('.$list->id_produk.')""
+            class="btn btn-primary btn-sm"><i class="fa fa-pencil-alt"></i></a>
+            <a onclick="deleteData('.$list->id_produk.')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+            </a></div>';
             $data[] = $row;
         }
 

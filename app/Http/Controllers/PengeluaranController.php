@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Pengeluaran;
+use Datatables;
+
 class PengeluaranController extends Controller
 {
     /**
@@ -20,7 +23,7 @@ class PengeluaranController extends Controller
       $pengeluaran = Pengeluaran::orderBy('id_pengeluaran', 'desc')->get();
       $no = 0;
       $data = array();
-      foreach($kategori as $list){
+      foreach($pengeluaran as $list){
         $no ++;
         $row = array();
         $row[] = $no;

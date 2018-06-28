@@ -18,13 +18,9 @@
         </div>
 
         <div class="box-body">
-
-          <form action="index.html" method="post">
-            {{ csrf_field() }}
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th width="20"><input type="checkbox" value="1" id="select-all"></th>
                   <th width="20">No</th>
                   <th>Nama Supplier</th>
                   <th>Alamat</th>
@@ -34,7 +30,6 @@
               </thead>
               <tbody></tbody>
             </table>
-          </form>
 
         </div>
 
@@ -68,7 +63,7 @@
           url : url,
           type : "POST",
           data : $('#modal-form form').serialize(),
-          dataType : 'JSON',
+          // dataType : 'JSON',
           success : function(data){
             $('#modal-form').modal('hide');
             table.ajax.reload();

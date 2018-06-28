@@ -10,17 +10,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('public/adminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/font-awesome/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/adminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
     <link href="{{ asset('public/adminLTE/dist/css/skins/skin-blue.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/adminLTE/plugins/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/adminLTE/plugins/datepicker/datepicker3.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/adminLTE/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('public/adminLTE/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('public/adminLTE/plugins/datepicker/datepicker3.css') }}" rel="stylesheet">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+    {{-- <div class="wrapper"> --}}
       <!-- Main Header -->
       <header class="main-header">
 
@@ -62,8 +62,8 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      {{-- <a href="{{ route('user.profil') }}" class="btn btn-default btn-flat">Profile</a> --}}
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a href="{{ route('user.profil') }}" class="btn btn-default btn-flat">Profile</a>
+                      {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
                     </div>
                     <div class="pull-right">
                       <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
@@ -82,7 +82,7 @@
       </header>
 
 
-    </div>
+    {{-- </div> --}}
 
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -112,10 +112,10 @@
           <li><a href="{{ route('produk.index') }}"><i class="fa fa-cubes"></i> <span>Produk</span></a></li>
           <li><a href="{{ route('member.index') }}"><i class="fa fa-credit-card"></i> <span>Member</span></a></li>
           <li><a href="{{ route('supplier.index') }}"><i class="fa fa-truck"></i> <span>Supplier</span></a></li>
-          <li><a href="#"><i class="fa fa-money-bill-alt"></i> <span>Pengeluaran</span></a></li>
-          <li><a href="#"><i class="fa fa-user"></i> <span>User</span></a></li>
+          <li><a href="{{ route('pengeluaran.index') }}"><i class="fa fa-money-bill-alt"></i> <span>Pengeluaran</span></a></li>
+          <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>User</span></a></li>
           <li><a href="#"><i class="fa fa-upload"></i> <span>Penjualan</span></a></li>
-          <li><a href="#"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
+          <li><a href="{{ route('pembelian.index') }}"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
           <li><a href="#"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
           <li><a href="#"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
 
@@ -176,6 +176,7 @@
     <script src="{{ asset('public/adminLTE/plugins/chartjs/Chart.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('public/adminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    {{-- <script src="{{ asset('public/adminLTE/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js') }}"></script> --}}
     <script src="{{ asset('public/adminLTE/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('public/js/validator.min.js') }}"></script>
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->

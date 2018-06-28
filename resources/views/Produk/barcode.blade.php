@@ -7,7 +7,7 @@
 
     <table width="100%">
         <tr>
-            @foreach($produk as $data)
+            @foreach($dataproduk as $data)
             <td align="center" style="border: 1px solid #ccc">
                 {{ $data->nama_produk }} - Rp. {{ format_uang($data->harga_jual) }}<br>
                 <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($data->kode_produk, 'C39') }}"

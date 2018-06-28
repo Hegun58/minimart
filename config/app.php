@@ -230,8 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'DataTables' => Yajra\DataTables\Facades\Datatables::class,
-        'DNSID' => Milon\Barcode\Facades\DNSIDFacade::class,
+        'Datatables' => Yajra\DataTables\Facades\Datatables::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 

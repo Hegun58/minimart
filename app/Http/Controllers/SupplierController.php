@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 
 use App\Supplier;
@@ -24,6 +23,7 @@ class SupplierController extends Controller
       $data = array();
       foreach($supplier as $list){
         $no ++;
+        $row = array();
         $row[] = $no;
         $row[] = $list->nama;
         $row[] = $list->alamat;
@@ -36,7 +36,6 @@ class SupplierController extends Controller
         </div>';
         $data[] = $row;
       }
-
       $output = array("data" => $data);
       return response()->json($output);
     }

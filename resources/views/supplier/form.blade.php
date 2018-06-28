@@ -17,7 +17,7 @@
 				  	<div class="form-group">
 							<label for="nama" class="col-md-3 control-label">Nama Supplier</label>
   						<div class="col-md-6">
-                <input id="kode" type='text' class="form-control" name="kode" autofocus required/>
+                <input id="nama" type='text' class="form-control" name="nama" autofocus required/>
                 <span class="help-block with-errors"></span>
   						</div>
 						</div>
@@ -33,7 +33,7 @@
 					<div class="form-group">
 						<label for="telpon" class="col-md-3 control-label">Telpon</label>
 						<div class="col-md-6">
-							<input id="telpon" type='text' class="form-control" name="telpon"  autofocus required/>
+							<input id="telpon" type='text' class="form-control" name="telpon" autofocus required/>
 							<span class="help-block with-errors"></span>
 						</div>
 					</div>

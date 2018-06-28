@@ -21,7 +21,7 @@
 
         <div class="box-body">
 
-          <form action="index.html" method="post">
+          <form method="post"  id="form-produk">
             {{ csrf_field() }}
             <table class="table table-striped">
               <thead>
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-@include('produk.form')
+@include('Produk.form')
 @endsection
 
 @section('script')
@@ -112,7 +112,8 @@ function addForm(){
 	$('input[name=_method]').val('POST');
 	$('#modal-form').modal('show');
 	$('#modal-form form')[0].reset();
-	$('.modal-title').text('Tambah Kategori');
+	$('.modal-title').text('Tambah Produk');
+  $('#kode').attr('readonly', false);
 }
 
 //Menampilkan form edit dan menampilkan data pada form tersebut
@@ -174,12 +175,12 @@ function deleteAll(){
 }
 
 //Mencetak barcode ketika tombol Cetak Barcode diklik
-function printBarcode({
-  if($('input.:checked').length < 1){
+function printBarcode(){
+  if($('input:checked').length < 1){
     alert('Pilih data yang akan dicetak!');
   }else{
     $('#form-produk').attr('target', '_blank').attr('action', "produk/cetak").submit();
   }
-});
+}
 </script>
 @endsection
