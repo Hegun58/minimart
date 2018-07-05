@@ -58,4 +58,23 @@ Route::group(['middleware' => ['web', 'cekuser:1']], function(){
   Route::get('pembelian_detail/{id}/data', 'PembelianDetailController@listData')->name('pembelian_detail.data');
   Route::get('pembelian_detail/loadform/{diskon}/{total}', 'PembelianDetailController@loadForm');
   Route::resource('pembelian_detail', 'PembelianDetailController');
+
+  Route::get('penjualan_detail/data', 'PenjualanController@listData')->name('penjualan.data');
+  Route::get('penjualan_detail/{id}/lihat', 'PenjualanController@show');
+  Route::resource('penjualan', 'PenjualanController');
+
+  Route::get('transaksi/baru', 'PenjualanDetailController@newSession')->name('transaksi.new');
+  Route::get('transaksi/{id}/data', 'PenjualanDetailController@listData')->name('transaksi.data');
+  Route::get('transaksi/cetaknota', 'PenjualanDetailController@printNota')->name('transaksi.cetak');
+  Route::get('transaksi/notapdf', 'PenjualanDetailController@notaPDF')->name('transaksi.pdf');
+  Route::post('transaksi/simpan', 'PenjualanDetailController@saveData');
+  Route::get('transaksi/loadForm/{diskon}/{total}/{diterima}', 'PenjualanDetailController@loadForm');
+  Route::resource('transaksi', 'PenjualanDetailController');
+
+  Route::get('laporan', 'LaporanController@index')->name('laporan.index');
+  Route::post('laporan', 'LaporanController@refresh')->name('laporan.refresh');
+  Route::get('laporan/data/{awal}/{akhir}', 'LaporanController@listData')->name('laporan.data');
+  Route::get('laporan/pdf/{awal}/{akhir}', 'LaporanController@exportPDF');
+
+  Route::resource('setting', 'SettingController');
 });

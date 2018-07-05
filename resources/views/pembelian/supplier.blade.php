@@ -24,7 +24,7 @@
 									<th>{{ $data->nama }}</th>
 									<th>{{ $data->alamat }}</th>
 									<th>{{ $data->telpon }}</th>
-									<th><a href="pembelian/{{ $data->id_suppier }}/tambah" class="btn btn-primary">
+									<th><a href="pembelian/{{ $data->id_supplier }}/tambah" class="btn btn-primary">
 										<i class="fa fa-check-circle"></i>Pilih
 									</a></th>
 								</tr>

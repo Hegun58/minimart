@@ -13,9 +13,12 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box">
-        <div class="box-body">
+        <div class="box-body text-center">
           <h1>Selamat Datang</h1>
           <h2>Anda login sebagai Kasir</h2>
+          <br><br>
+          <a class="btn btn-success btn-lg" href="{{ route('transaksi.new') }}">Transaksi Baru</a>
+          <br><br><br>
         </div>
       </div>
     </div>

@@ -73,7 +73,7 @@ class PembelianDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $produk = new Produk::where('kode_produk', '=', $request ['kode'])->firts();
+        $produk = Produk::where('kode_produk', '=', $request['kode'])->first();
         $detail = new PembelianDetail;
         $detail->id_pembelian = $request('idpembelian');
         $detail->kode_produk = $request['kode'];
