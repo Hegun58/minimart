@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth as Auth;
-
+use App\Setting;
+use App\Penjualan;
+use App\Kategori;
+use App\Produk;
+use App\Supplier;
+use App\Member;
 
 class HomeController extends Controller
 {
@@ -48,8 +53,8 @@ class HomeController extends Controller
         $supplier = Supplier::count();
         $member = Member::count();
 
-        if(Auth::user()->level ==1) return view('home.admin', compact('kategori', 'produk', 'supplier', 'member', 'awal', 
-        'akhir', 'data_pendapatan', 'data_tanggal'));
+        if(Auth::user()->level ==1) return view('home.admin', compact('kategori', 'produk', 
+        'supplier', 'member', 'awal', 'akhir', 'data_pendapatan', 'data_tanggal'));
         else return view('home.kasir', compact('setting'));
     }
 }

@@ -15,7 +15,7 @@
       <div class="box">
         <div class="box-header">
           <a onclick="periodeForm()" class="btn btn-success"><i class="fa fa-plus-circle"></i> Ubah Periode</a>
-          <a href="laporan/pdf/{{awal}}/{{akhir}}" target="_blank" class="btn btn-info"> <i class="fa fa-file-pdf-o"></i> Export PDF</a>
+          <a href="laporan/pdf/{{$awal}}/{{$akhir}}" target="_blank" class="btn btn-info"> <i class="fa fa-file-pdf-o"></i> Export PDF</a>
         </div>
 
         <div class="box-body">

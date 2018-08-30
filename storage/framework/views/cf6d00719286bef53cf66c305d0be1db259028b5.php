@@ -67,10 +67,10 @@
                       
                     </div>
                     <div class="pull-right">
-                      <a href="<?php echo e(route('logout')); ?>" class="btn btn-default btn-flat"
-                      onclick="event.preventDefault();document.getElementByID('logout-form').submit();">Logout</a>
-                      
-                      <form class="" action="#" method="post" style="display: none;">
+                      <a href="<?php echo e(route('logout')); ?>" class="btn btn-default btn-flat" 
+                      onclick="event.preventDefault();
+                      document.getElementByID('logout-form').submit();"> Logout</a>
+                      <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                         <?php echo e(csrf_field()); ?>
 
                       </form>
@@ -109,8 +109,8 @@
           <li><a href="<?php echo e(route('user.index')); ?>"><i class="fa fa-user"></i> <span>User</span></a></li>
           <li><a href="<?php echo e(route('penjualan.index')); ?>"><i class="fa fa-upload"></i> <span>Penjualan</span></a></li>
           <li><a href="<?php echo e(route('pembelian.index')); ?>"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
-          <li><a href="#"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
-          <li><a href="#"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
+          <li><a href="<?php echo e(route('laporan.index')); ?>"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
+          <li><a href="<?php echo e(route('setting.index')); ?>"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
 
           <?php else: ?>
 

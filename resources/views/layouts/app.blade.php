@@ -66,10 +66,10 @@
                       {{-- <a href="#" class="btn btn-default btn-flat">Profile</a> --}}
                     </div>
                     <div class="pull-right">
-                      <a href="{{ route('logout') }}" class="btn btn-default btn-flat"
-                      onclick="event.preventDefault();document.getElementByID('logout-form').submit();">Logout</a>
-                      {{-- <form class="" action="{{ route('logout') }}" method="post" style="display: none;"> --}}
-                      <form class="" action="#" method="post" style="display: none;">
+                      <a href="{{ route('logout') }}" class="btn btn-default btn-flat" 
+                      onclick="event.preventDefault();
+                      document.getElementByID('logout-form').submit();"> Logout</a>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                       </form>
                     </div>
@@ -116,8 +116,8 @@
           <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> <span>User</span></a></li>
           <li><a href="{{ route('penjualan.index') }}"><i class="fa fa-upload"></i> <span>Penjualan</span></a></li>
           <li><a href="{{ route('pembelian.index') }}"><i class="fa fa-download"></i> <span>Pembelian</span></a></li>
-          <li><a href="#"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
-          <li><a href="#"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
+          <li><a href="{{ route('laporan.index') }}"><i class="fa fa-file-pdf"></i> <span>Laporan</span></a></li>
+          <li><a href="{{ route('setting.index') }}"><i class="fa fa-cogs"></i> <span>Setting</span></a></li>
 
           @else
 

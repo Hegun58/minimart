@@ -12,11 +12,13 @@
 @section('content')
   <div class="row">
     <div class="col-md-3 col-xs-6">
-      <div class="inner">
-        <h3>{{ $kategori }}</h3>
-        <p>Total Kategori</p>
-        <div class="icon">
-          <i class="fa fa-cube"></i>
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3>{{ $kategori }}</h3>
+          <p>Total Kategori</p>
+          <div class="icon">
+            <i class="fa fa-cube"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -74,7 +76,7 @@
 @section('script')
 
 <script type="text/javascript">
-$function() {
+$(function() {
   var salesChartCanvas = 
   $("#salesChart").get(0).getContext("2d");
   var salesChart = new Chart(salesChartCanvas);
@@ -88,7 +90,7 @@ $function() {
         strokeColor: "rgb(210, 214, 222)",
         pointStrokeColor: '#c1c7d1',
         pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgb(220, 220, 220)"
+        pointHighlightStroke: "rgb(220, 220, 220)",
         data: {{ json_encode($data_pendapatan) }}
       }
     ]
@@ -96,11 +98,11 @@ $function() {
 
   var salesChartOptions = {
     pointDot: false,
-    responsive: true;
+    responsive: true
   };
 
   //Create the line chart
   salesChart.Line(salesChartData, salesChartOptions);
-}
+});
 </script>
 @endsection
